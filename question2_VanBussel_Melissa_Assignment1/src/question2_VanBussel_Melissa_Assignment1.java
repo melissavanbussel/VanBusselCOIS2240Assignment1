@@ -3,9 +3,9 @@
 * COIS2240
 * Assignment 1, Question 2
 * Due: February 4th, 2019
- */
+*/
 
-// Import libraries for user input and timing
+// Import libraries for user input and for timing
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -25,6 +25,10 @@ public class question2_VanBussel_Melissa_Assignment1 {
         whichMethodFaster(elapsedTimeRec, elapsedTimeIte);
     }
 
+    /** Compute the nth element in the Fibonacci sequence, using recursion
+     * @param n The position number in the Fibonacci Sequence to be computed (int)
+     * @return The nth element in the Fibonacci Sequence (int)
+     */
     public static int fibSeriesRec(int n) {
         if ((n == 0) || (n == 1))
             return n;
@@ -32,6 +36,10 @@ public class question2_VanBussel_Melissa_Assignment1 {
             return fibSeriesRec(n - 1) + fibSeriesRec(n - 2);
     }
 
+    /** Compute the nth element in the Fibonacci Sequence using iteration
+     * @param n The position number in the Fibonacci Sequence to be computed (int)
+     * @return The nth element in the Fibonacci Sequence (int)
+     */
     public static int fibSeriesIte(int n) {
         int firstFib = 0, secondFib = 1, newFib = 1;
         for (int i = 0; i < n; i++) {
@@ -42,6 +50,11 @@ public class question2_VanBussel_Melissa_Assignment1 {
         return firstFib;
     }
 
+    /** Display the first n elements of the Fibonacci sequence using recursion, calculate and display elapsed time
+     * to do so
+     * @param nFibonacci Elements of the Fibonacci Sequence up to the "nFibonacci"th element will be computed / displayed
+     * @return The number of nanoseconds that the computation took
+     */
     public static long callRecursiveFib(int nFibonacci) {
         System.out.println("The first " + nFibonacci + " integers in the Fibonacci Sequence, using the recursive method, are: ");
         long startTime = System.nanoTime();
@@ -54,6 +67,11 @@ public class question2_VanBussel_Melissa_Assignment1 {
         return elapsedTime;
     }
 
+    /** Display the first n elements of the Fibonacci sequence using iteration, calculate and display elapsed time
+     * to do so
+     * @param nFibonacci Elements of the Fibonacci Sequence up to the "nFibonacci"th element will be computed / displayed
+     * @return The number of nanoseconds that the computation took
+     */
     public static long callIterativeFib(int nFibonacci) {
         System.out.println("The first " + nFibonacci + " integers in the Fibonacci Sequence, using the iterative method, are: ");
         long startTime = System.nanoTime();
@@ -66,6 +84,10 @@ public class question2_VanBussel_Melissa_Assignment1 {
         return elapsedTime;
     }
 
+    /** Display whether recursion or iteration was faster, and by how much
+     * @param elapsedTimeRec The number of nanoseconds that the calculation took, using recursion
+     * @param elapsedTimeIte The number of nanoseconds that the calculation took, using iteration
+     */
     public static void whichMethodFaster(long elapsedTimeRec, long elapsedTimeIte) {
         if (elapsedTimeRec > elapsedTimeIte) {
             long amountFaster = elapsedTimeRec - elapsedTimeIte;
