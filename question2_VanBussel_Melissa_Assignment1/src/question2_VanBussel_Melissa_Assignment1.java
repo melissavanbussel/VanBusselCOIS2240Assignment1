@@ -73,7 +73,10 @@ public class question2_VanBussel_Melissa_Assignment1 {
         System.out.println("The first " + nFibonacci + " integers in the Fibonacci Sequence, using the recursive method, are: ");
         long startTime = System.nanoTime();
         for (int i = 0; i < nFibonacci; i++) {
-            System.out.print(fibSeriesRec(i) + " ");
+            if (i != 40)
+                System.out.print(fibSeriesRec(i) + " ");
+            else
+                System.out.print("\n" + fibSeriesRec(i) + " ");
         }
         long endTime = System.nanoTime();
         long elapsedTime = endTime - startTime;
@@ -90,7 +93,10 @@ public class question2_VanBussel_Melissa_Assignment1 {
         System.out.println("The first " + nFibonacci + " integers in the Fibonacci Sequence, using the iterative method, are: ");
         long startTime = System.nanoTime();
         for (int i = 0; i < nFibonacci; i++) {
-            System.out.print(fibSeriesIte(i) + " ");
+            if (i != 40)
+                System.out.print(fibSeriesIte(i) + " ");
+            else
+                System.out.print("\n" + fibSeriesIte(i) + " ");
         }
         long endTime = System.nanoTime();
         long elapsedTime = endTime - startTime;
