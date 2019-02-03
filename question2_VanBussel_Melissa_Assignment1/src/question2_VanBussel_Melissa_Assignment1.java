@@ -47,6 +47,9 @@ public class question2_VanBussel_Melissa_Assignment1 {
         return firstFib;
     }
 
+    /** Ask the user for the value of n and validate user input
+     * @return The value of n that the user would like to use in order to compute the Fibonacci Sequence up to the nth element.
+     */
     public static int askForUserInput() {
         Scanner userInput = new Scanner(System.in);         // Create Scanner object to get user input
         int nFibonacci;
