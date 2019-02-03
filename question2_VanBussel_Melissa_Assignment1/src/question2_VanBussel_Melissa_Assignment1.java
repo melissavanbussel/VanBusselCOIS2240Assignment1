@@ -11,10 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 public class question2_VanBussel_Melissa_Assignment1 {
     public static void main(String[] args) {
-        int nFibonacci;                                 // Create variable to store user's input
-        Scanner userInput = new Scanner(System.in);     // Create Scanner object to get user input
-        System.out.print("Enter the value of n >> ");   // Ask user how many numbers in the Fib sequence they want to calculate
-        nFibonacci = userInput.nextInt();               // Get input from user, store result in nFibonacci
+        int nFibonacci = askForUserInput();             // Call method which asks for the value of n
 
         // Calculate the Fib sequence using recursion, store the number of nanoseconds it took in elapsedTimeRec
         long elapsedTimeRec = callRecursiveFib(nFibonacci);
@@ -50,6 +47,23 @@ public class question2_VanBussel_Melissa_Assignment1 {
         return firstFib;
     }
 
+    public static int askForUserInput() {
+        Scanner userInput = new Scanner(System.in);         // Create Scanner object to get user input
+        int nFibonacci;
+        do {
+            // Ask user how many numbers in the Fib sequence they want to calculate
+            System.out.print("Enter the value of n (must be a positive integer) >> ");
+            while (!userInput.hasNextInt()) {
+                System.out.print("That isn't an integer! Enter the value of n (must be a positive integer) >> ");
+                userInput.next();
+            }
+            nFibonacci = userInput.nextInt();               // Get input from user, store result in nFibonacci
+            if (nFibonacci <= 0)
+                System.out.print("That isn't a positive integer! Enter the value of n (must be a positive integer) >> ");
+        } while (nFibonacci <= 0);
+        return nFibonacci;
+    }
+
     /** Display the first n elements of the Fibonacci sequence using recursion, calculate and display elapsed time
      * to do so
      * @param nFibonacci Elements of the Fibonacci Sequence up to the "nFibonacci"th element will be computed / displayed
@@ -80,7 +94,7 @@ public class question2_VanBussel_Melissa_Assignment1 {
         }
         long endTime = System.nanoTime();
         long elapsedTime = endTime - startTime;
-        System.out.println("\nThe elapsed time for the recursive method is " + elapsedTime + " nanoseconds");
+        System.out.println("\nThe elapsed time for the iterative method is " + elapsedTime + " nanoseconds");
         return elapsedTime;
     }
 
@@ -89,11 +103,11 @@ public class question2_VanBussel_Melissa_Assignment1 {
      * @param elapsedTimeIte The number of nanoseconds that the calculation took, using iteration
      */
     public static void whichMethodFaster(long elapsedTimeRec, long elapsedTimeIte) {
-        if (elapsedTimeRec > elapsedTimeIte) {
-            long amountFaster = elapsedTimeRec - elapsedTimeIte;
+        if (elapsedTimeRec < elapsedTimeIte) {
+            long amountFaster = elapsedTimeIte - elapsedTimeRec;
             System.out.println("The recursive method was faster by " + amountFaster + " nanoseconds");
         } else {
-            long amountFaster = elapsedTimeIte - elapsedTimeRec;
+            long amountFaster = elapsedTimeRec - elapsedTimeIte;
             System.out.print("The iterative method was faster by " + amountFaster + " nanoseconds");
         }
     }
